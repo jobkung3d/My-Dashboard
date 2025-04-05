@@ -1,18 +1,18 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import AdminNav from '../../components/AdminNav'
+import Footer from '../../components/Footer'
+import Container from '../../components/Container'
 import Link from 'next/link'
-import Container from '../components/Container'
 
-function EditPage() {
+function AdminEditPostsPage() {
     return (
         <Container>
-            <Navbar />
+            <AdminNav />
             <div className="flex-grow">
                 <div className="container mx-auto shadow0xl my-10 p-10 rounded-xl">
-                    <Link href="/welcome" className="bg-gray-500 inline-block text-white border py-2 px-3 rounded my-2">Go back</Link>
+                    <Link href="/admin/posts" className="bg-gray-500 inline-block text-white border py-2 px-3 rounded my-2">Go back</Link>
                     <hr className="my-3" />
-                    <h3 className="text-xl">Edit Post</h3>
+                    <h3 className="text-xl">Admin Edit User Post Page</h3>
                     <form action="">
                         <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='Post title' value="Title before update" />
                         <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='Img url' value="http://www.imgurl.com" />
@@ -26,4 +26,4 @@ function EditPage() {
     )
 }
 
-export default EditPage
+export default AdminEditPostsPage

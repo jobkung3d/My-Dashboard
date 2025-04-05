@@ -6,8 +6,8 @@ function SideNav() {
         <nav className='shadow-xl p-10 rounded-lg'>
             <ul>
                 <li><Link className="block my-3 p-3 rounded-lg" href="/admin">Dashboard</Link></li>
-                <li><Link className="block my-3 p-3 rounded-lg" href="/users">Users</Link></li>
-                <li><Link className="block my-3 p-3 rounded-lg" href="/posts">Posts</Link></li>
+                <li><Link className="block my-3 p-3 rounded-lg" href="/admin/users">Users</Link></li>
+                <li><Link className="block my-3 p-3 rounded-lg" href="/admin/posts">Posts</Link></li>
             </ul>
         </nav>
     )
