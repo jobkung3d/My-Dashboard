@@ -19,15 +19,32 @@ function RegisterPage() {
 
         if (password != confirmPassword) {
             setError("Password do not math");
+            setSuccess("");
             return;
         }
 
         if (!name || !email || !password || !confirmPassword) {
             setError("Please Complete All Input ");
+            setSuccess("");
             return;
         }
 
         try {
+            const resUserExists = await fetch("http://localhost:3000/api/userExists", {
+                method: "POST",
+                header: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+
+            const { user } = await resUserExists.json();
+
+            if (user) {
+                setError("User already exits");
+                setSuccess("");
+                return;
+            }
             const res = await fetch("http://localhost:3000/api/register", {
                 method: "POST",
                 header: {
