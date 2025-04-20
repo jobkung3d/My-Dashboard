@@ -27,7 +27,7 @@ function AdminEditUserPage({ params }) {
 
     const getUserById = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/totalusers/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/totalusers/${id}`, {
                 method: "GET",
                 cache: "no-store",
             })
@@ -52,7 +52,7 @@ function AdminEditUserPage({ params }) {
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/totalusers/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/totalusers/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

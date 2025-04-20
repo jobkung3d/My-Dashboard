@@ -27,7 +27,7 @@ function AdminEditPostsPage({ params }) {
 
     const getPostById = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/totalposts/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/totalposts/${id}`, {
                 method: "GET",
                 cache: "no-store",
             })
@@ -52,7 +52,7 @@ function AdminEditPostsPage({ params }) {
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/totalposts/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/totalposts/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

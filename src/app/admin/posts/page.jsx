@@ -22,7 +22,7 @@ function AdminUserManagePage() {
     console.log(allPostsData);
     const getAllPostsData = async () => {
         try {
-            const res = await fetch("http://localhost:3000/api/totalposts", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/totalposts`, {
                 method: "GET",
                 cache: "no-store",
             })
