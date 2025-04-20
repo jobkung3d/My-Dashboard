@@ -1,8 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My-Dashboard
 
-## Getting Started
+A customizable dashboard application built with **Next.js**, designed to provide users with a personalized interface for managing and viewing various data widgets.
 
-First, run the development server:
+## 🚀 Features
+
+- **Next.js Framework** – Server-side rendering and static site generation.
+- **Custom Fonts** – Optimized loading with `next/font` using Vercel's Geist font.
+- **Modular Architecture** – Clear separation between components, models, and utilities.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+Make sure you have one of the following package managers installed:
+
+- [npm](https://www.npmjs.com/)
+- [Yarn](https://yarnpkg.com/)
+- [pnpm](https://pnpm.io/)
+- [Bun](https://bun.sh/)
+
+### Installation
+
+1. **Clone the repository:**
+
+```bash
+git clone https://github.com/jobkung3d/My-Dashboard.git
+cd My-Dashboard
+```
+
+2. **Install dependencies:**
+
+Using npm:
+
+```bash
+npm install
+```
+
+Or with Yarn:
+
+```bash
+yarn install
+```
+
+Or with pnpm:
+
+```bash
+pnpm install
+```
+
+Or with Bun:
+
+```bash
+bun install
+```
+
+### Run the development server
 
 ```bash
 npm run dev
@@ -14,23 +66,33 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+My-Dashboard/
+├── lib/                # Utility functions and libraries
+├── models/             # Data models
+├── public/             # Static assets
+├── src/
+│   └── app/            # Application pages and components
+├── .gitignore
+├── README.md
+├── eslint.config.mjs
+├── jsconfig.json
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+```
 
-## Learn More
+## 📚 Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Vercel Deployment](https://vercel.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License](LICENSE).
