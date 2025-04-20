@@ -1,11 +1,45 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import AdminNav from '../components/AdminNav'
 import Footer from '../components/Footer'
 import SideNav from '../components/SideNav'
 import Container from '../components/Container'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
+import DeleteBtn from './DeleteBtn'
 
 function AdminUserManagePage() {
+    const { data: session } = useSession();
+    if (!session) redirect("/login")
+    if (!session?.user?.role === "admin") redirect("/welcome")
+
+    const [allUsersData, setAllUsersData] = useState([]);
+
+    const getAllUsersData = async () => {
+        try {
+            const res = await fetch("http://localhost:3000/api/totalusers", {
+                cache: "no-store",
+            })
+
+            if (!res.ok) {
+                throw new Error("Failed to fetch user")
+            }
+
+            const data = await res.json();
+
+            setAllUsersData(data);
+
+        } catch (error) {
+            console.log("Error loading users: ", error);
+        }
+    }
+
+    useEffect(() => {
+        getAllUsersData()
+    }, [])
+
     return (
         <Container>
             <AdminNav />
@@ -24,21 +58,25 @@ function AdminUserManagePage() {
                                             <th className="p-5">ID</th>
                                             <th className="p-5">Username</th>
                                             <th className="p-5">Email</th>
-                                            <th className="p-5">Password</th>
+                                            <th className="p-5">Role</th>
                                             <th className="p-5">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="p-5">1231294904</td>
-                                            <td className="p-5">John Doe</td>
-                                            <td className="p-5">Johndoe@gmail.com</td>
-                                            <td className="p-5">fgkj123@</td>
-                                            <td className="p-5">
-                                                <Link className="bg-gray-500 text-white border py-2 px-3 rounded text-lg my-2" href="/admin/users/edit">Edit</Link>
-                                                <Link className="bg-red-500 text-white border py-2 px-3 rounded text-lg my-2" href="/admin/users/delete">Delete</Link>
-                                            </td>
-                                        </tr>
+                                        {
+                                            allUsersData?.map((val) => (
+                                                <tr key={val._id} className="border-b hover:bg-gray-100">
+                                                    <td className="p-5">{val._id}</td>
+                                                    <td className="p-5">{val.name}</td>
+                                                    <td className="p-5">{val.email}</td>
+                                                    <td className="p-5">{val.role}</td>
+                                                    <td className="p-5">
+                                                        <Link className="bg-gray-500 text-white border py-2 px-3 rounded text-lg my-2" href={`/admin/users/edit/${val._id}`}>Edit</Link>
+                                                        <DeleteBtn id={val._id} />
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        }
                                     </tbody>
                                 </table>
                             </div>

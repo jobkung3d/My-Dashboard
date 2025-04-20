@@ -15,9 +15,14 @@ function EditPage({ params }) {
     if (!session) redirect("/login")
 
     const { id } = params;
-    console.log(id);
 
-    const [postData, setPostData] = useState("");
+    const [postData, setPostData] = useState({});
+
+    const [newTitle, setNewTitle] = useState("");
+    const [newImg, setNewImg] = useState("");
+    const [newContent, setNewContent] = useState("");
+
+    const router = useRouter();
 
     const getPostById = async () => {
         try {
@@ -31,9 +36,8 @@ function EditPage({ params }) {
             }
 
             const data = await res.json();
-            console.log('Edit post: ', data);
             setPostData(data);
-            console.log('postData: ', postData);
+
         } catch (error) {
             console.log(error);
         }
@@ -43,9 +47,35 @@ function EditPage({ params }) {
         getPostById()
     }, [])
 
+    console.log('postData: ', postData);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('submit');
+
+        try {
+
+            const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+                method: "PUT",
+                header: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    newTitle,
+                    newImg,
+                    newContent
+                })
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to update post")
+            }
+            console.log(res)
+            router.refresh();
+            router.push("/welcome")
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -57,9 +87,12 @@ function EditPage({ params }) {
                     <hr className="my-3" />
                     <h3 className="text-xl">Edit Post</h3>
                     <form action="" onSubmit={handleSubmit}>
-                        <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.title} />
-                        <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.img} />
-                        <textarea name="" id="" cols="30" rows="10" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.content}></textarea>
+                        <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2"
+                            placeholder={postData?.post?.title} onChange={(e) => setNewTitle(e.target.value)} />
+                        <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2"
+                            placeholder={postData?.post?.img} onChange={(e) => setNewImg(e.target.value)} />
+                        <textarea name="" id="" cols="30" rows="10" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2"
+                            placeholder={postData?.post?.content} onChange={(e) => setNewContent(e.target.value)}></textarea>
                         <button type='submit' name='update' className="bg-green-500 text-white border py-2 px-3 rounded text-lg my-2">Update Post</button>
                     </form>
                 </div>

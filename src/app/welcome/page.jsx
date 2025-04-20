@@ -8,20 +8,22 @@ import Image from 'next/image'
 import Container from '../components/Container'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
+import DeleteBtn from './DeleteBtn'
 
 function WelcomePage() {
     const { data: session } = useSession();
-    if (!session) {
-        redirect("/login")
-    }
 
-    console.log(session);
+    if (!session) redirect("/login")
+    if (session?.user?.role === "admin") redirect("/admin")
+
+
     const [postData, setPostData] = useState([]);
     const userEmail = session?.user?.email;
 
     const getPosts = async () => {
         try {
             const res = await fetch(`http://localhost:3000/api/posts?email=${userEmail}`, {
+                method: "GET",
                 cache: "no-store",
             })
 
@@ -69,7 +71,7 @@ function WelcomePage() {
                                     </p>
                                     <div className="mt-5">
                                         <Link className="bg-gray-500 text-white border py-2 px-3 rounded-md text-lg my-2" href={`/edit/${val._id}`}>Edit</Link>
-                                        <Link className="bg-red-500 text-white border py-2 px-3 rounded-md text-lg my-2" href={`/delete/${val._id}`}>Delete</Link>
+                                        <DeleteBtn id={val._id} />
                                     </div>
                                 </div>
                             ))

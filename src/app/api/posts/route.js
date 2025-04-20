@@ -21,3 +21,10 @@ export async function GET(req) {
     const posts = await Post.find({ userEmail: userEmail });
     return NextResponse.json(posts, { status: 200 });
 }
+
+export async function DELETE(req, { params }) {
+    const id = req.nextUrl.searchParams.get("id");
+    await connectMongoDB();
+    await Post.findByIdAndDelete(id);
+    return NextResponse.json({ message: "Post deleted successfully" }, { status: 200 });
+}
