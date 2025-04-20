@@ -85,7 +85,7 @@ function AdminUserManagePage() {
                 </div>
             </div>
             <Footer />
-            page</Container>
+        </Container>
     )
 }
 
