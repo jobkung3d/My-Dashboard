@@ -2,7 +2,7 @@
 
 A customizable dashboard application built with **Next.js**, designed to provide users with a personalized interface for managing and viewing various data widgets.
 
-Demo: [my-dashboard-mf7a5lmoc-jobs-projects-6ea01de3.vercel.app](my-dashboard-mf7a5lmoc-jobs-projects-6ea01de3.vercel.app)
+Demo: [my-dashboard-mf7a5lmoc-jobs-projects-6ea01de3.vercel.app](https://my-dashboard-seven-omega.vercel.app/)
 ## 🚀 Features
 
 - **Next.js Framework** – Server-side rendering and static site generation.
