@@ -70,7 +70,7 @@ function RegisterPage() {
             }
 
         } catch (error) {
-            console.log("Error during registeratoin: ", error)
+            console.log("Error during registration: ", error)
         }
     }
 
@@ -100,7 +100,7 @@ function RegisterPage() {
                             <input type="text" onChange={(e) => setName(e.target.value)} className="w-full bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='Enter your name' />
                             <input type="email" onChange={(e) => setEmail(e.target.value)} className="w-full bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='Enter your email' />
                             <input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='Enter your password' />
-                            <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} className="w-full bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='comfirm your password' />
+                            <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} className="w-full bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder='confirm your password' />
                             <button className="bg-green-500 text-white border py-2 px-3 rounded text-lg my-2" type="submit">Sign Up</button>
                             <hr className="my-3" />
                             <p>
