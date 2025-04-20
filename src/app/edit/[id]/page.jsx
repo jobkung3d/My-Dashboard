@@ -44,7 +44,8 @@ function EditPage({ params }) {
     }, [])
 
     const handleSubmit = async (e) => {
-
+        e.preventDefault();
+        console.log('submit');
     }
 
     return (
@@ -55,7 +56,7 @@ function EditPage({ params }) {
                     <Link href="/welcome" className="bg-gray-500 inline-block text-white border py-2 px-3 rounded my-2">Go back</Link>
                     <hr className="my-3" />
                     <h3 className="text-xl">Edit Post</h3>
-                    <form action="">
+                    <form action="" onSubmit={handleSubmit}>
                         <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.title} />
                         <input type="text" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.img} />
                         <textarea name="" id="" cols="30" rows="10" className="w-[300px] block bg-gray-200 border py-2 px-3 rounded text-lg my-2" placeholder={postData.post?.content}></textarea>
